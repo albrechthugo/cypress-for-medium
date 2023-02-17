@@ -1,8 +1,8 @@
 function App() {
   return (
-    <div>
+    <h1 className="text-primary text-xl">
       cypress-for-medium
-    </div>
+    </h1>
   )
 }
 

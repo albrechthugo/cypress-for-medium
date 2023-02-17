@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Satoshi";
   src: url("/fonts/Satoshi-Regular.ttf") format("truetype");
@@ -27,9 +31,10 @@
 }
 
 :root {
-  font-family: 'Satoshi', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Satoshi', system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: normal;
+  background-color: #3a404a;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
