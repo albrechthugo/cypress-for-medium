@@ -1,3 +1,4 @@
+import CurrencyInput from 'react-currency-input-field';
 import * as Slider from '@radix-ui/react-slider';
 import { useState } from 'react';
 import { formatCurrency } from '../utils';
@@ -5,16 +6,6 @@ import { formatCurrency } from '../utils';
 export const Vehicles = () => {
   const [month, setMonth] = useState(24);
   const [amount, setAmount] = useState(0);
-
-  const handleMonth = ([value]: number[]): void => {
-    setMonth(value);
-  };
-
-  const handleAmount = ({
-    target: { value: amount }
-  }: React.ChangeEvent<HTMLInputElement>): void => {
-    setAmount(+amount);
-  };
 
   return (
     <form className='w-full h-full flex flex-col items-start'>
@@ -24,10 +15,12 @@ export const Vehicles = () => {
         aria-label='month'
         className='relative flex items-center select-none touch-none w-full h-2'
         defaultValue={[24]}
-        onValueChange={handleMonth}
         min={12}
         max={72}
         step={12}
+        onValueChange={([value]: number[]) => {
+          setMonth(value);
+        }}
       >
         <Slider.Track className='bg-slate-400 relative grow rounded-full h-1'>
           <Slider.Range className='absolute bg-primary rounded-full h-full' />
@@ -44,14 +37,20 @@ export const Vehicles = () => {
           O valor de:
         </label>
 
-        <input
-          type='number'
+        <CurrencyInput
+          defaultValue={amount}
+          maxLength={10}
           className='w-60 h-12 rounded px-4 bg-gray-600'
-          aria-label='amount'
-          name='amount'
-          style={{ appearance: 'textfield' }}
-          onChange={handleAmount}
-          placeholder='R$ 23.000,50'
+          intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
+          allowNegativeValue={false}
+          onValueChange={(value: string | undefined) => {
+            if (!value) {
+              setAmount(0);
+            }
+
+            const parsedValue = value?.replace(',', '.');
+            setAmount(+parsedValue!);
+          }}
         />
       </fieldset>
 
@@ -59,7 +58,7 @@ export const Vehicles = () => {
 
       <span className='text-xl font-bold my-5'>Você pagará:</span>
 
-      <h2 className='text-4xl font-bold text-green-500'>{formatCurrency(amount)}</h2>
+      <h2 className='text-4xl font-bold text-green-500'>{formatCurrency(amount || 0)}</h2>
 
       <button
         type='button'
