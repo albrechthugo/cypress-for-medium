@@ -1,7 +1,5 @@
 import { Simulator } from './components';
 
-function App() {
-  return <Simulator />;
-}
+const App = () => <Simulator />;
 
 export default App;
