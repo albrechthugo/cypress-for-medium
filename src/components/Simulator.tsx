@@ -12,12 +12,12 @@ const tabs: Tab[] = [
   {
     value: 'properties',
     label: 'Imóveis',
-    component: Properties
+    component: () => <Properties />
   },
   {
     value: 'vehicles',
     label: 'Veículos',
-    component: Vehicles
+    component: () => <Vehicles anualFee={12} />
   }
 ];
 

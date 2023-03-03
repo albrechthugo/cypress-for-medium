@@ -2,10 +2,16 @@ import CurrencyInput from 'react-currency-input-field';
 import * as Slider from '@radix-ui/react-slider';
 import { useState } from 'react';
 import { formatCurrency } from '../utils';
+import { useFees } from '../hooks';
 
-export const Vehicles = () => {
+type VehiclesProps = {
+  anualFee: number;
+};
+
+export const Vehicles = ({ anualFee }: VehiclesProps) => {
   const [month, setMonth] = useState(24);
   const [amount, setAmount] = useState(0);
+  const loanValue = useFees({ anualFee, months: month, initialValue: amount });
 
   return (
     <form className='w-full h-full flex flex-col items-start'>
@@ -54,11 +60,11 @@ export const Vehicles = () => {
         />
       </fieldset>
 
-      <span className='text-zinc-200 font-light mt-5'>Com um juros de 4,99% ao ano...</span>
+      <span className='text-zinc-200 font-light mt-5'>Com um juros de {anualFee}% ao ano...</span>
 
       <span className='text-xl font-bold my-5'>Você pagará:</span>
 
-      <h2 className='text-4xl font-bold text-green-500'>{formatCurrency(amount || 0)}</h2>
+      <h2 className='text-4xl font-bold text-green-500'>{formatCurrency(loanValue || 0)}</h2>
 
       <button
         type='button'
