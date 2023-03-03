@@ -4,11 +4,19 @@ import { useState } from 'react';
 import { formatCurrency } from '../utils';
 import { useFees } from '../hooks';
 
-type VehiclesProps = {
+export enum LoanTypeLabel {
+  VEHICLES = 'veículo',
+  PROPERTIES = 'imóvel'
+}
+
+type FormProps = {
   anualFee: number;
+  maxMonths: number;
+  minMonths: number;
+  type: LoanTypeLabel;
 };
 
-export const Vehicles = ({ anualFee }: VehiclesProps) => {
+export const Form = ({ anualFee, minMonths, maxMonths, type }: FormProps) => {
   const [month, setMonth] = useState(24);
   const [amount, setAmount] = useState(0);
   const loanValue = useFees({ anualFee, months: month, initialValue: amount });
@@ -21,8 +29,8 @@ export const Vehicles = ({ anualFee }: VehiclesProps) => {
         aria-label='month'
         className='relative flex items-center select-none touch-none w-full h-2'
         defaultValue={[24]}
-        min={12}
-        max={72}
+        min={minMonths}
+        max={maxMonths}
         step={12}
         onValueChange={([value]: number[]) => {
           setMonth(value);
@@ -60,13 +68,15 @@ export const Vehicles = ({ anualFee }: VehiclesProps) => {
         />
       </fieldset>
 
-      <span className='text-zinc-200 font-light mt-6'>Com um juros de {anualFee}% ao ano...</span>
+      <span className='text-zinc-200 font-light  mt-6'>com um juros de {anualFee}% ao ano...</span>
 
-      <span className='text-xl font-bold my-5'>Você pagará:</span>
-
-      <h2 className='text-2xl font-bold w-full md:text-3xl text-green-500'>
-        {formatCurrency(loanValue || 0)}
-      </h2>
+      <span className='text-xl my-5 leading-9'>
+        Você pagará em seu <strong className='text-primary'>{type}</strong>:
+        <br />
+        <span className='text-2xl font-bold w-full md:text-3xl text-green-500'>
+          {formatCurrency(loanValue || 0)}
+        </span>
+      </span>
 
       <button
         type='button'

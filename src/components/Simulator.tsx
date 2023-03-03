@@ -1,6 +1,5 @@
 import * as Tabs from '@radix-ui/react-tabs';
-import { Properties } from './Properties';
-import { Vehicles } from './Vehicles';
+import { Form, LoanTypeLabel } from './Form';
 
 type Tab = {
   value: string;
@@ -12,12 +11,26 @@ const tabs: Tab[] = [
   {
     value: 'properties',
     label: 'Imóveis',
-    component: () => <Properties />
+    component: () => (
+      <Form
+        anualFee={10}
+        maxMonths={100}
+        minMonths={12}
+        type={LoanTypeLabel.PROPERTIES}
+      />
+    )
   },
   {
     value: 'vehicles',
     label: 'Veículos',
-    component: () => <Vehicles anualFee={12} />
+    component: () => (
+      <Form
+        anualFee={12}
+        maxMonths={72}
+        minMonths={12}
+        type={LoanTypeLabel.VEHICLES}
+      />
+    )
   }
 ];
 
