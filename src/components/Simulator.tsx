@@ -25,7 +25,7 @@ export const Simulator = () => {
   return (
     <main className='w-full h-full flex items-center justify-center'>
       <Tabs.Root
-        className='w-full max-w-[468px] h-3/5 bg-background rounded flex flex-col'
+        className='w-full max-w-screen-md h-full md:h-auto md:max-w-[468px] bg-background rounded flex flex-col'
         defaultValue='vehicles'
       >
         <Tabs.List className='w-full h-16 flex items-center'>

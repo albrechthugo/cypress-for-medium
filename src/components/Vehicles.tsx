@@ -35,7 +35,7 @@ export const Vehicles = ({ anualFee }: VehiclesProps) => {
         <Slider.Thumb className='cursor-pointer block w-5 h-5 bg-zinc-200 rounded-full' />
       </Slider.Root>
 
-      <fieldset className='flex flex-col mt-10'>
+      <fieldset className='flex flex-col mt-8'>
         <label
           htmlFor='amount'
           className='text-zinc-200 font-bold mb-2'
@@ -60,15 +60,17 @@ export const Vehicles = ({ anualFee }: VehiclesProps) => {
         />
       </fieldset>
 
-      <span className='text-zinc-200 font-light mt-5'>Com um juros de {anualFee}% ao ano...</span>
+      <span className='text-zinc-200 font-light mt-6'>Com um juros de {anualFee}% ao ano...</span>
 
       <span className='text-xl font-bold my-5'>Você pagará:</span>
 
-      <h2 className='text-4xl font-bold text-green-500'>{formatCurrency(loanValue || 0)}</h2>
+      <h2 className='text-2xl font-bold w-full md:text-3xl text-green-500'>
+        {formatCurrency(loanValue || 0)}
+      </h2>
 
       <button
         type='button'
-        className='bg-primary rounded font-bold w-full h-14 mt-auto hover:bg-[#2dbfff] duration-500 disabled:bg-gray-500 disabled:cursor-not-allowed'
+        className='bg-primary rounded font-bold w-full h-14 mt-auto md:mt-8 hover:bg-[#2dbfff] duration-500 disabled:bg-gray-500 disabled:cursor-not-allowed'
         disabled={!amount}
       >
         Eu quero
