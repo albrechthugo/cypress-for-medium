@@ -44,6 +44,7 @@ export const Simulator = () => {
         <Tabs.List className='w-full h-16 flex items-center'>
           {tabs.map(({ value, label }) => (
             <Tabs.Trigger
+              data-cy={`simulator__tab__${value}`}
               className='w-full h-full border-b-2 opacity-60 border-slate-400 data-[state=active]:font-bold data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:opacity-100'
               key={value}
               value={value}

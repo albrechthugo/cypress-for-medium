@@ -23,10 +23,16 @@ export const Form = ({ anualFee, minMonths, maxMonths, type }: FormProps) => {
 
   return (
     <form className='w-full h-full flex flex-col items-start'>
-      <span className='text-zinc-200 font-bold mb-2'>Em {month} meses...</span>
+      <span
+        data-cy='simulator-form__selected-months'
+        className='text-zinc-200 font-bold mb-2'
+      >
+        Em {month} meses...
+      </span>
 
       <Slider.Root
         aria-label='month'
+        data-cy='simulator-form__slider'
         className='relative flex items-center select-none touch-none w-full h-2'
         defaultValue={[24]}
         min={minMonths}
@@ -54,6 +60,7 @@ export const Form = ({ anualFee, minMonths, maxMonths, type }: FormProps) => {
         <CurrencyInput
           defaultValue={amount}
           maxLength={10}
+          data-cy='simulator-form__amount-input'
           className='w-60 h-12 rounded px-4 bg-gray-600'
           intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
           allowNegativeValue={false}
@@ -70,16 +77,23 @@ export const Form = ({ anualFee, minMonths, maxMonths, type }: FormProps) => {
 
       <span className='text-zinc-200 font-light  mt-6'>com um juros de {anualFee}% ao ano...</span>
 
-      <span className='text-xl my-5 leading-9'>
+      <span
+        data-cy='simulator-form__final-amount__label'
+        className='text-xl my-5 leading-9'
+      >
         Você pagará em seu <strong className='text-primary'>{type}</strong>:
         <br />
-        <span className='text-2xl font-bold w-full md:text-3xl text-green-500'>
+        <span
+          data-cy='simulator-form__final-amount__value'
+          className='text-2xl font-bold w-full md:text-3xl text-green-500'
+        >
           {formatCurrency(loanValue || 0)}
         </span>
       </span>
 
       <button
         type='button'
+        data-cy='simulator-form__confirm-button'
         className='bg-primary rounded font-bold w-full h-14 mt-auto md:mt-8 hover:bg-[#2dbfff] duration-500 disabled:bg-gray-500 disabled:cursor-not-allowed'
         disabled={!amount}
       >

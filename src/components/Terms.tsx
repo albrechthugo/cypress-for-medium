@@ -9,7 +9,10 @@ export const Terms = ({ children }: React.PropsWithChildren) => {
       <p className='mt-6 text-sm'>
         Todos os valores simulados por essa aplicação podem sofrer variações ao longo do tempo, e
         também estão sujeitos a mudanças após análise de crédito dos usuários.
-        <strong className='text-primary'>
+        <strong
+          data-cy='terms__main-warning'
+          className='text-primary'
+        >
           {' '}
           Essa aplicação é apenas um experimento e não reflete a realidade.{' '}
         </strong>
