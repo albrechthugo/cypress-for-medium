@@ -3,7 +3,7 @@
 Essa aplicação foi construída como um exemplo simples e prático para construir o artigo <strong>Testes E2E e Cypress: como testar uma aplicação web utilizando boas práticas</strong>
 que foi originalmente escrito para o Medium do Banco PAN.
 
-Você pode ler esse artigo [https://medium.com/opanehtech/testes-e2e-e-cypress-como-testar-uma-aplica%C3%A7%C3%A3o-web-utilizando-boas-pr%C3%A1ticas-93c10621e07a](aqui).
+Você pode ler esse artigo [aqui](https://medium.com/opanehtech/testes-e2e-e-cypress-como-testar-uma-aplica%C3%A7%C3%A3o-web-utilizando-boas-pr%C3%A1ticas-93c10621e07a).
 
 Espero que aproveite e que possa te ajudar no desenvolvimento de testes end-to-end utilizando Cypress.
 
